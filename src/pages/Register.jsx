@@ -14,8 +14,6 @@ const Register = () => {
         passwordRef.current.value
       )
       .then((data) => {
-        alert("signin successfull");
-        console.log("signIn successfull", data);
       })
       .catch((e) => {
         console.log(e);
@@ -27,7 +25,7 @@ const Register = () => {
         <input 
         ref={emailRef}
         type="text" 
-        placeholder="enail" />
+        placeholder="email" />
         <input 
         ref={passwordRef}
         type="text" 

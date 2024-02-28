@@ -1,27 +1,27 @@
 import React, { useRef } from 'react';
 
 import { useFirebase } from '../context/Firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const firebase = useFirebase();
+    const navigate = useNavigate();
     const handleLogin = (e)=>{
          e.preventDefault();
          firebase.loginUserWithEmailAndPassword(emailRef.current.value,passwordRef.current.value)
          .then((data)=>{
-            alert("Your logged in")
-            console.log("login",data);
          })
          .catch((e)=>{
             console.log(e);
          })
     }
     const handleGoogle = ()=>{
-        console.log(firebase);
+       
         firebase.loginWithGoogle()
         .then((data)=>{
-             console.log(data);
+            
         })
         .catch((e)=>{
              console.log(e);
@@ -43,6 +43,10 @@ const Login = () => {
       </form>
       <button onClick={handleGoogle}>google</button>
     </div>
+
+    <h1 onClick={()=>{
+        navigate("/register")
+    }}>sign up</h1>
   </div>
   )
 }
